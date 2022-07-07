@@ -1,0 +1,1 @@
+"D:\javaTool\wechat\微信web开发者工具\cli.bat" cloud functions deploy --e macaroon-3gf9an40b97ebdfa --n quickstartFunctions --r --project "D:\wechat-workspace\waimai_diancan" --report_first --report

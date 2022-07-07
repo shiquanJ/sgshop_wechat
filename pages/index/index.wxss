@@ -1,0 +1,96 @@
+
+.swiper {
+  height: 600rpx;
+}
+.swiper image {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 30%;
+  border-bottom-right-radius: 30%;
+}
+.main{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: linear-gradient(rgb(255,255,255),rgb(246,244,240) );
+  background-size: 100% 100%;
+}
+
+.addr-box{
+  width: 90%;
+  height:50px;
+  margin:auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.addr-box image{
+  width:25px;
+  height:25px;
+}
+.images_icon{
+  padding-right: 10px;
+}
+.default-images{
+  width: 55px;
+  height: 55px;
+  margin-bottom: 11rpx;
+  border-radius: 50%;
+}
+.card-box{
+  width: 90%;
+  height: 300px;
+  margin: auto;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 5%;
+  border:1px  solid #fff;
+  display: grid;
+}
+.card-item{
+  display:flex;
+  width: 100%;
+}
+.card-item-image{
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.item-list{
+  width: 40%;
+  height: 180px;
+  border-radius: 10%;
+  background-color: rgb(246,244,240);
+  box-shadow: #fff;
+  justify-content:center;
+  align-items: center;
+}
+
+.item-list image{
+  
+  width: 100px;
+  height: 100px;
+}
+
+.vip-bg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#f7dc6f;
+  border-radius: 3%;
+}
+
+
+
+.userInfo{
+  position: absolute;
+  top:calc(35%);
+  left:calc(5%);
+  width:90%;
+  height:30%;
+  background-color: #fff;
+  z-index: 999;
+  border-radius: 5%;
+}

@@ -1,0 +1,87 @@
+<!--pages/order/checkout/checkout.wxml-->
+<view class="content">
+	<block wx:if="{{is_self == 'true'}}">
+		<view class="content-title">请确认您的订单</view>
+	</block>
+	<block wx:else>
+		<view class="addr-item">
+			<view class="addr-start">
+				<view class="addr-box">
+					<view class="flex bold">
+						<image class="addr-image" src="/images/icon/location.png"></image>
+						{{receipt_detail}}
+					</view>
+					<view class="flex p-l-35">
+						<view class="small-text opa-6">
+							{{receipt_name+" "+gender}}
+						</view>
+						<view class="small-text opa-6 p-l-35">
+							{{receipt_phone}}
+						</view>
+					</view>
+					<view class="flex space-between p-l-35">
+						<view class="small-text opa-8">
+							立即配送
+						</view>
+						<view class="small-text opa-8 orange-text">
+							大约{{order_sendtime}}送达
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="addr-end">
+				<image class="addr-icon" src="/images/icon/add_left.png">
+				</image>
+			</view>
+		</view>
+	</block>
+	<view class="order">
+		<view class="order-title">订单详情</view>
+		<view class="order-list">
+			<!-- 输出订单商品 -->
+			<view class="order-item" wx:for="{{tempOrderList}}" wx:key="id">
+				<view class="order-item-l">
+					<image class="order-item-image" mode="widthFix" src="{{server}}{{item.image_url}}"></image>
+					<view>
+						<view class="order-item-name bold opa-8">{{item.prd_name}}</view>
+						<view class="order-item-number">x {{item.order_cnt}}</view>
+					</view>
+				</view>
+				<view class="order-item-price">{{priceFormat(item.price)}}</view>
+			</view>
+			<!-- 优惠信息 -->
+			<view class="order-item" wx:if="{{checkPromotion(promotion)}}">
+				<view class="order-item-l">
+					<text class="order-promotion-icon">减</text>满减优惠
+				</view>
+				<view class="order-promotion-price">- {{priceFormat(promotion)}}</view>
+			</view>
+			<!-- 小计 -->
+			<view class="order-item">
+				<view class="order-item-l">小计</view>
+				<view class="order-total-price">{{priceFormat(total_price)}}</view>
+			</view>
+		</view>
+	</view>
+	<!-- 备注 -->
+	<view class="content-comment">
+		<label>备注</label>
+		<textarea placeholder="给商家备注信息" bindinput="comment"></textarea>
+	</view>
+</view>
+<view class="operate">
+	<view class="operate-info">合计： {{priceFormat(total_price)}}</view>
+	<view class="operate-btn" bindtap="payment">支付订单</view>
+</view>
+
+<wxs module="priceFormat">
+	module.exports = function(price) {
+		return '¥ ' + parseFloat(price)
+	}
+</wxs>
+<!-- 检查满减信息 -->
+<wxs module="checkPromotion">
+	module.exports = function(promotion) {
+		return parseFloat(promotion) > 0
+	}
+</wxs>

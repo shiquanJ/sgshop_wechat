@@ -1,0 +1,121 @@
+/* pages/order/list/list.wxss */
+
+page {
+  background-color: #f8f8f8;
+}
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 15px;
+  background-color: #fff;
+  z-index: 1;
+}
+.header-item{
+  padding-right: 60px;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.6;
+}
+.choose{
+  font-weight: 700;
+  font-size: 15px;
+  opacity: 0.9;
+}
+.list{
+  margin-top:52px;
+}
+.list-empty {
+  margin-top: 80rpx;
+  text-align: center;
+  color: #666;
+  font-size: 40rpx;
+}
+.detail-image{
+  width: 80px;
+  height: 80px;
+}
+.detail-name{
+  color: #000;
+  opacity: 0.8;
+}
+.menu-start {
+  margin: 30rpx;
+  border-radius: 80rpx;
+  background-color: #f24;
+  color: #fff;
+}
+
+
+.list-item {
+  display: flex;
+  padding: 20rpx;
+  color: #999;
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.list-item-l {
+  width: 100%;
+}
+
+.list-item-name {
+  padding-right: 20rpx;
+}
+
+.list-item-price {
+  color: #f24;
+  margin-left: 20rpx;
+  font-weight: 600;
+}
+
+.list-item-t {
+  margin-bottom: 20rpx;
+}
+.list-item-state{
+  float: right;
+  margin-right: 10px;
+  color: #f24;
+}
+.list-item-r >view {
+  position: absolute;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  margin-top: 30px;
+  background-color: #f8f8f8;
+  opacity: 0.8;
+  display: grid;
+}
+
+.list-item-detail {
+  text-align: center;
+  color: #000;
+  font-weight: 700;
+  font-size: 24rpx;
+}
+
+.list-item-taken {
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 17rpx 10rpx;
+  margin-left: 20rpx;
+  background-color: #f24;
+}
+
+.taken-yes {
+  background-color: #e7e6e4;
+  color: rgb(95, 92, 92);
+}
+
+.list-item-last {
+  display: block;
+  text-align: center;
+}

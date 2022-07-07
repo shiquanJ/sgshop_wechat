@@ -1,0 +1,52 @@
+<view class="con">
+  <block wx:if="{{is_new}}">
+    <view class="top1">新建收货地址</view>
+  </block>
+  <block wx:else>
+    <view class="top1">编辑收货地址</view>
+  </block>
+  <view class="con2 flex-row j_b" bindtap="getLocation">
+    <view class="con2_text1">收货地址</view>
+    <block wx:if="{{add}}">
+      <view class="con2_input">
+        <input type="text" placeholder="点击选择收货地址" placeholder-class="p_class" disabled></input>
+        <image class="add_arrow" src="../../../images/icon/add_left.png"></image>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="con2_add">
+        <view class="add_name">{{addressName}}</view>
+        <view class="add_deta">{{addressDetail}}</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="con2 flex-row j_b">
+    <view class="con2_text1">详细地址</view>
+    <view class="con2_input">
+      <input type="text" placeholder="详细地址，例，文君庭小区" placeholder-class="p_class" bindinput="setInput" data-type="detail"
+        value="{{params.detail}}"></input>
+    </view>
+  </view>
+  <view class="con2 flex-row j_b">
+    <view class="con2_text1">联系人</view>
+    <view class="con2_input">
+      <input type="text" placeholder="请填写" placeholder-class="p_class" bindinput="setInput" data-type="contact"
+        value="{{params.contact}}"></input>
+    </view>
+    <view class="gender"> 
+      <checkbox bindtap="checked" id="0" checked="{{checked == 0? 'checked': ''}}">先生</checkbox>
+      <checkbox bindtap="checked" id="1" checked="{{checked == 1? 'checked': ''}}">女士</checkbox>
+    </view>
+  </view>
+  <view class="con2 flex-row j_b">
+    <view class="con2_text1">手机号</view>
+    <view class="con2_input">
+      <input type="number" placeholder="请填写" placeholder-class="p_class" bindinput="setInput" data-type="phone"
+        value="{{params.phone}}" maxlength="11"></input>
+    </view>
+  </view>
+
+</view>
+<view class="btn bg {{can_click?'ok':''}}" bindtap="subAddress">保存</view>
+<view class="la_tip" hidden="{{address_id}}" bindtap="chooseAddress">获取微信收货地址</view>

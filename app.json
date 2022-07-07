@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/list",
+    "pages/order/checkout/checkout",
+    "pages/order/detail/detail",
+    "pages/order/list/list",
+    "pages/mine/mine",
+    "pages/mine/addrList/addr",
+    "pages/mine/newAddr/newAddr",
+    "pages/mine/userInfo/userInfo"
+  ],
+  "window": {
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#e891a0",
+    "navigationBarTitleText": "PizzHut-세권",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#f24",
+    "borderStyle": "white",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "images/icon/index.png",
+      "selectedIconPath": "images/icon/index_c.png"
+    },{
+      "pagePath": "pages/order/list/list",
+      "text": "订单",
+      "iconPath": "images/icon/list.png",
+      "selectedIconPath": "images/icon/list_c.png"
+    },{
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath": "images/icon/my.png",
+      "selectedIconPath": "images/icon/my_c.png"
+    }]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取当前地理位置"
+    }
+  }
+
+
+}

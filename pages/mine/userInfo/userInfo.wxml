@@ -1,0 +1,25 @@
+<!--pages/mine/mine.wxml-->
+
+<view class="main-box">
+  <view class="item-box">
+    <view class="item-image">  
+      <image src="{{avatarUrl}}"></image>
+    </view>
+    <view class="item-name">
+      <text class="text-defalut f-w">
+        {{nickName}}
+      </text>
+      <view class="p-10">
+        <text class="btn-modify ">修改</text>
+      </view>
+    </view>
+    <view class="border-bottom"></view>
+    <view class="item-phoneNo">
+      <text class="text1">手机</text>
+      <text class="text2">{{phoneNo}}</text>
+      <text class="btn-modify-phone ">更换手机号</text>
+    </view>
+  </view>
+</view>
+<tabbar selected = "{{2}}"> </tabbar> 
+

@@ -1,0 +1,67 @@
+<!--pages/mine/mine.wxml-->
+
+<view class="mainClass">
+  <view class="top-container">
+    <view class='userinfo'>
+      <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
+      <label class="text-default">{{nickName}}</label>
+      <label class="text-default">{{phoneNo}}</label>
+    </view>
+    <view class="middle-container">
+      <view class="item-list" bindtap="myInfo">
+        <text class="item-name">我的信息</text>
+      </view>
+      <view class="item-list" bindtap="showModal">
+         <text class="item-name">订单管理</text>
+      </view>
+      <view class="item-list" bindtap="goNewAddr">
+         <text class="item-name">收货地址</text>
+      </view>
+    </view>
+  </view>
+  <!-- 收货地址 -->
+  <!-- <view class='go-center'>
+    <view class="addrClass"  bindtap="goNewAddr"> 
+      <view>
+        <image class="icon-img" src="/images/addrNo.png"></image>
+      </view>
+      <view class="textClass" >
+        <block wx:if="{{addrNo!='' && userName!='' && phoneNo!=''}}">
+          <view>{{addrNo}}</view>
+          <view>{{userName}}:{{phoneNo}}</view>
+        </block>
+        <block wx:else>
+          <input type="text" style='font-size:15px;' placeholder="新建收货地址"/>
+        </block>
+      </view>
+    </view>
+  </view> -->
+  
+          
+        
+  
+</view>
+<view class="modal-mask" style="display:{{display}}">
+  <view class="modal-dialog">
+    <view class="modal-content">
+      为了方便您接受订单等信息，需要绑定您的手机号码
+    </view>
+    <view>
+      <image class="security-img" src="{{img_url}}/images/icon/security.png" ></image>
+    </view>
+    <view class="modal-footer">
+      <view class="btn">
+        <button  class="btn-cancel" bindtap="goCancel" >
+          取消
+        </button>
+      </view>
+      <view class="btn" >
+        <button  class="btn-confirm" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >
+          确定
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+<tabbar selected = "{{2}}"> </tabbar> 
+

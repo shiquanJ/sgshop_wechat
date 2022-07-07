@@ -1,0 +1,64 @@
+<!--index.wxml-->
+<view class="main">
+	<view class="addr-box">
+		<view class="images_icon">
+			<image src="../../images/icon/location.png"></image>
+		</view>
+		<view class="text">
+			{{addrName}}
+		</view>
+	</view>
+	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+		<block wx:for="{{swiper}}" wx:key="index">
+			<swiper-item>
+				<image src="{{item}}"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+	<view class="card-box">
+		<view class="card-item p-15" style="align-items: center;">
+		<block wx:if="{{hasUserInfo}}">
+			<image class="card-item-image" src="{{userInfo.avatarUrl}}"></image>
+			<view class="grid">
+				<label class="text">{{userInfo.nickName}}</label>
+				<view class="small-text bold vip-bg">欢迎VIP用户</view>
+			</view>
+		</block>
+		<block wx:else>
+			<view class="flex " animation = "{{animationData}}" bindtap="getUserProfile">
+				<image class="default-images" src="/images/index/login.jpg"></image>
+				<text class="bold opa-8" style="margin-left: 10px;">
+					点击获取头像
+				</text>
+			</view>
+		</block>
+		</view>
+
+		<view class="card-item space-evenly">
+			<!-- <button open-type="share" animation = "{{animationData}}" class="item-list grid"> -->
+			<button animation = "{{animationData}}" class="item-list grid" bindtap="getUserProfile" data-id="0">
+				<text class="big-text bold">门店自取</text>
+				<image src="/images/icon/self.png"></image>
+			</button>
+			
+			<button animation = "{{animationData}}"  class="item-list grid" bindtap="getUserProfile" data-id="1">
+				<text class="big-text bold">外送到家</text>
+				<image src="/images/icon/takeout.png"></image>
+			</button>
+		</view>
+	</view>
+</view>
+
+<!-- 弹窗广告 -->
+<!-- <block wx:if="{{!hasUserInfo}}">
+	<button class="bg-gray" bindtap="getUserProfile"></button>
+	<button class="userInfo" bindtap="getUserProfile">
+		<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+			<block wx:for="{{banner}}" wx:key="index">
+			<swiper-item>
+				<image src="{{item}}"></image>
+			</swiper-item>
+		</block>
+		</swiper>
+	</button>
+</block> -->
