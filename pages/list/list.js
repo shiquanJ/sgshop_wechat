@@ -21,7 +21,7 @@ Page({
     promotion: {},
     server: server,
     windowHeight:'',
-    is_self:false, //false 外卖， true 自取
+    is_self:'', //false 外卖， true 自取
   },
   changingCategory: false, // 是否正在切换左侧激活的分类（防止滚动过快时切换迟缓）
   shopcartAnimate: null,

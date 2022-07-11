@@ -25,7 +25,7 @@ App({
   globalData: {
     userInfo: wx.getStorageSync("userInfo"),
     //server: 'http://116.62.231.62/wechat',
-    server: 'http://localhost:8080'
+    server: 'http://8.142.251.252:8086'
   },
     // 登录
     wxlogin:function(){

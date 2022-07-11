@@ -16,6 +16,9 @@ Page({
     receipt_phone: '',
     receipt_detail: '',
     order_sendtime: '',
+
+    addrList:"",  //收货地址
+    is_open:false, //收货地址popup
   },
 
   
@@ -30,15 +33,23 @@ Page({
     timestamp = timestamp / 1000;
     var order_hous = new Date((timestamp + 60 * 30)*1000).getHours()
     var order_minutes = new Date((timestamp + 60 * 30)*1000).getMinutes()
+
+    //todo
+    if(order_minutes < 9 ){
+      order_minutes = '0'+order_minutes
+    }
+    console.log(options.is_self)
+    //false是外卖
     this.setData({
-      is_self:options.is_self,
-      order_sendtime: order_hous +":" +order_minutes
-    })
+        is_self:options.is_self,
+        order_sendtime: order_hous +":" +order_minutes
+     })
 
     //获取临时订单list
     fetch('/api/get_temp_order_list', {
       temp_order_id : temp_order_id,
-      user_id: wx.getStorageSync('user_id')
+      user_id: wx.getStorageSync('user_id'),
+      is_self: this.data.is_self
     }).then(data => {
       console.log('tempOrderList::'+JSON.stringify(data.tempOrderList));
       this.setData({
@@ -56,7 +67,42 @@ Page({
       this.onLoad(options)
     })
   },
+  getAddrList: function (e){
+    fetch('/api/addrList', {
+      user_id : wx.getStorageSync('user_id'),
+    }, 'POST').then(res => {
+      console.log(res.addrList)
+      if(res.addrList){
+        this.setData({
+          addrList: res.addrList,
+          is_open: true
+        })
+      }
+    })
+  },
+  setDefaultAddr: function(e){
+    var addr_id = e.currentTarget.dataset.id;
+    fetch('/api/getAddrInfo', {
+      user_id : wx.getStorageSync('user_id'),
+      addr_id : addr_id,
 
+    }, 'POST').then(data => {
+      this.setData({
+        addr_id: data.addr_id,
+        receipt_name: data.receipt_name,
+        gender: data.gender,
+        receipt_phone: data.receipt_phone,
+        receipt_detail: data.receipt_detail,
+      })
+      this.close_popup()
+    })
+  },
+  //close_popup
+  close_popup : function(){
+    this.setData({
+      is_open:false
+    })
+  },
   payment: function(e){
     var outTradeNo = temp_order_id;  //订单号
     console.log(this.data.comment)
@@ -71,9 +117,11 @@ Page({
           temp_order_id:outTradeNo,
           total_cnt: this.data.total_cnt,
           total_price: this.data.total_price,
+          order_sendtime : this.data.order_sendtime,
           user_id: wx.getStorageSync('user_id'),
           user_comment: this.data.comment,
           is_self: this.data.is_self,
+          addr_id: this.data.addr_id,
         },'POST').then(res =>{
           if(res.order_id != null && res.order_id != ''){
             wx.navigateTo({

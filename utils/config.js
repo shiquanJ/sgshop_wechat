@@ -1,3 +1,3 @@
 module.exports = {
-  url: 'http://localhost:8080'
+  url: 'http://8.142.251.252:8086'
 }

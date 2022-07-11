@@ -14,12 +14,12 @@ page {
 .card-title {
   width: 28rpx;
   padding: 0 30rpx;
-  background-color: rgb(255, 115, 0);
+  background-color: #ff4500;
   color: #fff;
-  border-left: 1rpx solid #de5f4b;
   font-size: 28rpx;
   display: flex;
   align-items: center;
+  opacity: 0.8;
 }
 
 .card-content {
@@ -27,9 +27,6 @@ page {
   margin-left: 50rpx;
 }
 
-.card-info {
-  margin-left: 10rpx;
-}
 
 .card-code {
   font-size: 60rpx;
@@ -38,7 +35,7 @@ page {
 
 .card-info-r {
   font-size: 24rpx;
-  color: rgb(255, 133, 34);
+  color: #ff4500;
 }
 
 .card-comment {
@@ -138,8 +135,41 @@ page {
   text-align: center;
   margin: 20rpx auto;
   padding: 12rpx 20rpx;
-  background-color: #f24;
+  background-color: #e891a0;
   color: #fff;
   font-size: 32rpx;
   border-radius: 10rpx;
+}
+
+
+
+.addr-item{
+  width: 100%;
+  display:flex;
+  padding:10px;
+  background-color: #fff;
+}
+.addr-start{
+  width: 90%;
+}
+.addr-end{
+  width: 10%;
+  display: grid;
+  align-items: center;
+}
+.addr-box{
+ display: grid; 
+ line-height: 2;
+}
+.addr-image{
+  width: 20px;
+  height: 20px;
+  padding-right: 15px;
+  margin-top: 5px;
+}
+.addr-icon{
+  width:15px;
+  height: 15px;
+  opacity: 0.6;
+  
 }

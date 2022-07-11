@@ -4,7 +4,7 @@
 		<view class="content-title">请确认您的订单</view>
 	</block>
 	<block wx:else>
-		<view class="addr-item">
+		<view class="addr-item" bindtap="getAddrList">
 			<view class="addr-start">
 				<view class="addr-box">
 					<view class="flex bold">
@@ -73,6 +73,37 @@
 	<view class="operate-info">合计： {{priceFormat(total_price)}}</view>
 	<view class="operate-btn" bindtap="payment">支付订单</view>
 </view>
+
+<!-- 슬라이드 팝업 -->
+<block wx:if="{{is_open}}">
+	<view class="bg-gray" bindtap="close_popup"></view>
+	<view class="slide-popup">
+		<view class="item-list opa-8" wx:for="{{addrList}}" bindtap="setDefaultAddr" data-id="{{item.a_id}}">
+      <view class="item-box">
+        <view class="start">
+          <view class="bold">
+            {{item.receipt_detail}}
+          </view>
+          <view class="small-text">
+            {{item.receipt_name+' '}}{{item.gender}}
+          </view>
+        </view>
+        <view class="middle">
+          <view class="bold">
+            {{item.receipt_address_detail.length > 9 ? substr(item.receipt_address_detail,0,9) : item.receipt_address_detail }}
+          </view>
+          <view class="small-text">
+            {{item.receipt_phone+' ' }}  
+          </view>
+        </view>
+        <view class="end" data-id="{{item.a_id}}">
+          <image class="add_arrow" src="../../../images/icon/add_left.png"></image>
+        </view>
+      </view>
+    </view>
+	</view>
+</block>
+
 
 <wxs module="priceFormat">
 	module.exports = function(price) {
