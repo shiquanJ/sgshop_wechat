@@ -1,10 +1,16 @@
+// 引入SDK核心类
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min');
+// 实例化API核心类
+var qqmapsdk = new QQMapWX({
+  key: 'J2SBZ-P7IK3-KEC3A-YZZFA-YDXHE-QQB5K' // 必填
+});
 //index.js
 const app = getApp();
 const fetch = app.fetch
 Page({
   data: {
     swiper: ['/images/index/lb1.jpg','/images/index/lb2.jpg','/images/index/lb3.jpg'],
-    addrName: wx.getStorageSync("addrName"),
+    addrName: '',
     userInfo : '',
     hasUserInfo: false,
     animationData:{}
@@ -19,6 +25,10 @@ Page({
         hasUserInfo : true
       })
     }
+    app.getAddrName();
+    this.setData({
+      addrName : wx.getStorageSync("addrName")
+    })
     
   },
   onShow: function(){
@@ -40,10 +50,33 @@ Page({
         animationData:animation.export()
       })
     }.bind(this), 1000);
-  },
 
+    wx.startLocationUpdate({
+      success: (res) => {
+        wx.onLocationChange((data)=>{
+          qqmapsdk.reverseGeocoder({
+            location:{
+              latitude: data.latitude,
+              longitude: data.longitude
+            },
+            success : (res) =>{
+              console.log("weizhi:3:"+JSON.stringify(res.result.address_component.street));
+              wx.setStorageSync("addrName",res.result.address_component.street)
+              this.setData({
+                addrName : wx.getStorageSync("addrName")
+              })
+            },
+            fail :(res) =>{
+              console.log("fail::"+JSON.stringify(res));
+              return null;
+            }
+          })
+        })
+      },
+    })
+  },
   //外卖
-  goShipping: function(e){
+  /* goShipping: function(e){
     var userInfo = this.data.userInfo;
     console.log(userInfo)
     if(userInfo){
@@ -53,7 +86,7 @@ Page({
     }else{
       getUserProfile(e)
     }
-  },
+  }, */
   getUserProfile(e){
     var userInfo = this.data.userInfo;
     if(!userInfo){
@@ -66,6 +99,8 @@ Page({
             hasUserInfo : true
           })
           wx.setStorageSync('userInfo', res.userInfo) ;
+          var id = e.currentTarget.dataset.id;
+          this.goMenu(id); 
         },
         fail: (res) => {},
         complete: (res) => {
@@ -73,38 +108,44 @@ Page({
         },
       })
     }else{
-      //有权限了
       var id = e.currentTarget.dataset.id;
-      if(id == 0){  //门店自取
+      this.goMenu(id);
+    }
+  },
+
+  goMenu : function(id){
+    //有权限了
+    if(id == 0){  //门店自取
+      wx.navigateTo({
+        url: '/pages/list/list?is_self=true'
+      })
+    }else if(id == 1){        //外卖
+      var addList = wx.getStorageSync('addrList')
+      console.log(addList)
+      if(addList){
         wx.navigateTo({
-          url: '/pages/list/list?is_self=true'
+          url: '/pages/list/list?is_self=false'
         })
-      }else{        //外卖
-        var addList = wx.getStorageSync('addrList')
-        console.log(addList)
-        if(addList){
-          wx.navigateTo({
-            url: '/pages/list/list?is_self=false'
-          })
-        }else{
-          //访问数据库获取收获地址
-          fetch('/api/addrList', {
-            user_id : wx.getStorageSync('user_id')
-            ,
-          }, 'POST').then(res => {
-            if(res.hasAddrInfo){
-              app.setSession('addrList',res.addrList);
-              wx.navigateTo({
-                url: '/pages/list/list?is_self=false'
-              })
-            }else{
-              wx.navigateTo({
-                url: '/pages/mine/addr/addr',
-              })
-            }
-          })
-        }
+      }else{
+        //访问数据库获取收获地址
+        fetch('/api/addrList', {
+          user_id : wx.getStorageSync('user_id')
+          ,
+        }, 'POST').then(res => {
+          if(res.hasAddrInfo){
+            app.setSession('addrList',res.addrList);
+            wx.navigateTo({
+              url: '/pages/list/list?is_self=false'
+            })
+          }else{
+            wx.navigateTo({
+              url: '/pages/mine/addr/addr?is_self=false',
+            })
+          }
+        })
       }
+    }else{
+      console.log('点击头像了')
     }
   },
 

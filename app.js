@@ -18,8 +18,6 @@ App({
         traceUser:true
       })
     }
-    this.getAddrName();
-    this.wxlogin();
   },
   
   globalData: {

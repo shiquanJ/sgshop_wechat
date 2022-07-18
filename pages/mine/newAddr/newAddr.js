@@ -21,6 +21,7 @@ Page({
     checked: 0,
     can_click:false,//默认不可点击
     default_addr: '', //默认项
+    is_self: '',
   },
   checked : function (e){
     this.setData({
@@ -65,8 +66,11 @@ Page({
   onLoad: function (options) {
     var id = options.a_id;
     console.log(id)
-    this.data.addr_id = id 
-    if(id !=null && id != ''){
+    if(options.is_self == 'false'){
+      this.data.is_self = 'false'
+    }
+    if(id !=null && id != '' && id != 'undefined'){
+      this.data.addr_id = id 
 
       //ID查询收获地址
       fetch('/api/getAddrInfo', {
@@ -207,9 +211,18 @@ Page({
           icon: 'success',  // 图标类型，默认success
           duration: 1500  // 提示窗停留时间，默认1500ms
         })
-        wx.navigateTo({
-          url: '../addrList/addr',
-        })
+        /* wx.reLaunch({
+          url: '/pages/index/index'
+        }); */
+        if(this.data.is_self == 'false'){
+          wx.navigateTo({
+            url: '/pages/list/list?is_self=false'
+          });
+        }else{
+          wx.reLaunch({
+            url: '/pages/mine/addr/addr'
+          })
+        }
       }
     })
     

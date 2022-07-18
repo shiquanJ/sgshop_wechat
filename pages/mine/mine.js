@@ -108,7 +108,7 @@ Page({
   },
    goNewAddr : function (e){
     wx.navigateTo({
-      url: './addrList/addr',
+      url: './addr/addr',
      })
   },
   goCancel : function(){

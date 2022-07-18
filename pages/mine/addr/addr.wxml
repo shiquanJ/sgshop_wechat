@@ -1,2 +1,47 @@
-<!--pages/mine/addr/addr.wxml-->
-<text>pages/mine/addr/addr.wxml</text>
+
+<view class="container">
+  <view class="header">
+    <view class="btn-white" bindtap="setNewAddr">新增地址</view>
+  </view>
+  <block wx:if="{{hasAddrInfo}}">
+    <view class="item-list opa-8" wx:for="{{addrList}}" bindtap="setDetailAddr" data-id="{{item.a_id}}">
+      <view class="item-box">
+        <view class="start">
+          <view class="bold">
+            {{item.receipt_detail}}
+          </view>
+          <view class="small-text">
+            {{item.receipt_name+' '}}{{item.gender}}
+          </view>
+        </view>
+        <view class="middle">
+          <view class="bold">
+            {{item.receipt_address_detail.length > 9 ? substr(item.receipt_address_detail,0,9) : item.receipt_address_detail }}
+          </view>
+          <view class="small-text">
+            {{item.receipt_phone+' ' }}  
+          </view>
+        </view>
+        <view class="end" bindtap="setDetailAddr" data-id="{{item.a_id}}">
+          <image class="add_arrow" src="../../../images/icon/add_left.png"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else> 
+    <view class="no-result" bindtap="setNewAddr">
+      <text class="text-gray">请添加收货地址</text>
+    </view>
+  </block>
+</view>
+
+<wxs module="substr">
+	module.exports = function(str,start,end){
+		if(str){
+
+			return str.substring(start,end) + '...'
+		}else{
+			return ''
+		}
+	}
+</wxs>

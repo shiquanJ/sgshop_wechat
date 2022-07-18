@@ -1,1 +1,93 @@
-/* pages/mine/addr/addr.wxss */
+page{
+  background-color: #fff;
+}
+.container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.item-list{
+  width:100%;
+  border: 1px solid rgba(245,245,245);
+}
+.item-box{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 2;
+  text-align: center;
+}
+.item-check{
+  width: 5%;
+}
+.start{
+  width: 35%;
+}
+.middle{
+  width: 45%;
+}
+.end{
+  width:5%;
+}
+.add_arrow{
+  width: 20rpx;
+  height: 22rpx;
+  margin-top: 10rpx;
+  opacity: 0.6;
+}
+.title{
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(122, 122, 122);
+}
+
+.header{
+  width:100%;
+  height: 40px;
+  display:flex;
+  align-items: center;
+  
+  justify-content: flex-end;
+}
+.btn-white{
+  width: 20%;
+  font-size: 14px;
+}
+
+.no-result{
+  width: 100%;
+  height: 50px;
+  margin: auto;
+  text-align: center;
+}
+.item-list-image{
+  width: 25px;
+  height:25px;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+}
+
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #fed6e3;
+}
+
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 18rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}

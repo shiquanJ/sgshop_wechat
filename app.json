@@ -6,7 +6,7 @@
     "pages/order/detail/detail",
     "pages/order/list/list",
     "pages/mine/mine",
-    "pages/mine/addrList/addr",
+    "pages/mine/addr/addr",
     "pages/mine/newAddr/newAddr",
     "pages/mine/userInfo/userInfo"
   ],
