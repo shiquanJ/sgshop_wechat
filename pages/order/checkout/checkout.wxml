@@ -19,12 +19,12 @@
 							{{receipt_phone}}
 						</view>
 					</view>
-					<view class="flex space-between p-l-35">
-						<view class="small-text opa-8">
-							立即配送
+					<view class="flex space-between p-l-35 m-t-10">
+						<view class="bold opa-8">
+							配送时间：
 						</view>
-						<view class="small-text opa-8 orange-text">
-							大约{{order_sendtime}}送达
+						<view class="opa-8 orange-text">
+							{{order_sendtime}} 送达
 						</view>
 					</view>
 				</view>
@@ -71,13 +71,16 @@
 </view>
 <view class="operate">
 	<view class="operate-info">合计： {{priceFormat(total_price)}}</view>
-	<view class="operate-btn" bindtap="payment">支付订单</view>
+	<view class="operate-btn" open-type="share" bindtap="payment">确认订单</view>
 </view>
 
 <!-- 슬라이드 팝업 -->
 <block wx:if="{{is_open}}">
 	<view class="bg-gray" bindtap="close_popup"></view>
 	<view class="slide-popup">
+    <view class="popup-header" bindtap="setNewAddr">
+      <view class="btn-white bold opa-8 p-r-20">新增地址</view>
+    </view>
 		<view class="item-list opa-8" wx:for="{{addrList}}" bindtap="setDefaultAddr" data-id="{{item.a_id}}">
       <view class="item-box">
         <view class="start">
@@ -103,6 +106,7 @@
     </view>
 	</view>
 </block>
+
 
 
 <wxs module="priceFormat">

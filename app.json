@@ -8,7 +8,8 @@
     "pages/mine/mine",
     "pages/mine/addr/addr",
     "pages/mine/newAddr/newAddr",
-    "pages/mine/userInfo/userInfo"
+    "pages/mine/userInfo/userInfo",
+    "pages/reservation/reservation"
   ],
   "window": {
     "backgroundColor": "#fff",

@@ -4,64 +4,52 @@
   <view class="top-container">
     <view class='userinfo'>
       <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
-      <label class="text-default">{{nickName}}</label>
-      <label class="text-default">{{phoneNo}}</label>
+      <label class="text-default opa-8 bold">{{nickName}}</label>
+      <label class="text-default">{{phoneno}}</label>
     </view>
     <view class="middle-container">
-      <view class="item-list" bindtap="myInfo">
-        <text class="item-name">我的信息</text>
+      <view class="item-list " bindtap="unabled">
+        <view class="flex opa-3 center">
+          <image class="item-img" src="/images/icon/point.png"></image>
+          <text class="item-name">我的积分</text>
+        </view>
+        <image class="arrow-left opa-3" src="/images/icon/right.png"></image>
       </view>
-      <view class="item-list" bindtap="showModal">
-         <text class="item-name">订单管理</text>
+      <view class="item-list" bindtap="goOrderList">
+        <view class="flex center">
+         <image class="item-img" src="/images/icon/history.png"></image>
+          <text class="item-name">消费历史</text>
+        </view>
+        <image class="arrow-left" src="/images/icon/right.png"></image>
       </view>
       <view class="item-list" bindtap="goNewAddr">
-         <text class="item-name">收货地址</text>
-      </view>
-    </view>
-  </view>
-  <!-- 收货地址 -->
-  <!-- <view class='go-center'>
-    <view class="addrClass"  bindtap="goNewAddr"> 
-      <view>
-        <image class="icon-img" src="/images/addrNo.png"></image>
-      </view>
-      <view class="textClass" >
-        <block wx:if="{{addrNo!='' && userName!='' && phoneNo!=''}}">
-          <view>{{addrNo}}</view>
-          <view>{{userName}}:{{phoneNo}}</view>
-        </block>
-        <block wx:else>
-          <input type="text" style='font-size:15px;' placeholder="新建收货地址"/>
-        </block>
-      </view>
-    </view>
-  </view> -->
-  
-          
-        
-  
-</view>
-<view class="modal-mask" style="display:{{display}}">
-  <view class="modal-dialog">
-    <view class="modal-content">
-      为了方便您接受订单等信息，需要绑定您的手机号码
-    </view>
-    <view>
-      <image class="security-img" src="{{img_url}}/images/icon/security.png" ></image>
-    </view>
-    <view class="modal-footer">
-      <view class="btn">
-        <button  class="btn-cancel" bindtap="goCancel" >
-          取消
-        </button>
-      </view>
-      <view class="btn" >
-        <button  class="btn-confirm" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >
-          确定
-        </button>
+        <view class="flex center">
+         <image class="item-img" src="/images/icon/location.png"></image>
+          <text class="item-name">收货地址</text>
+        </view>
+        <image class="arrow-left" src="/images/icon/right.png"></image>
       </view>
     </view>
   </view>
 </view>
+
+<view class="war_pop">
+  <view class="box">
+    <view class="box_view"></view>
+  </view>
+</view>
+
+
 <tabbar selected = "{{2}}"> </tabbar> 
+
+<!-- unabled popup -->
+<block wx:if="{{is_open}}">
+	<view class="bg-gray" bindtap="close_popup"></view>
+	<view class="unabled-popup" style="height: {{windowHeight}};">
+		<view class="popup-item">
+      此功能暂未开放，敬请期待~
+    </view>
+	</view>
+</block>
+
 

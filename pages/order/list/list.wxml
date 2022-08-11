@@ -11,9 +11,11 @@
 	</view>
 </view>
 <view class="list">
-	<view class="list-empty" wx:if="{{order.length == 0}}">
-		<text>您还没有下过订单~\n快开启您的点餐之旅吧！</text>
-    <button class="menu-start" bindtap="start">开始点餐 →</button>
+	<view class="list-empty" wx:if="{{order.length == 0}}" style="height: {{windowHeigh}};">
+		<view class="grid">
+			<image src="/images/icon/empty.png"></image>
+			<text>暂无订单</text>
+		</view>
 	</view>
 	<view class="list-item" wx:for="{{order}}" wx:key="id"  bindtap="detail" data-id="{{item.order_id}}">
 		<view class="list-item-l">
@@ -27,7 +29,7 @@
 				</view>
 
 			</view>
-			<view class="flex" wx:for="{{order_detail}}" wx:for-index="idx" wx:for-item="detail_list">
+			<view class="flex detail-list" wx:for="{{order_detail}}" wx:for-index="idx" wx:for-item="detail_list">
 				<view class="list-item-name" wx:for="{{detail_list}}" wx:for-index="j"  wx:for-item="detail">
 					<block wx:if="{{item.order_id == detail.order_id}}">
 						<image class="detail-image" src="{{server}}{{detail.image_url}}"></image>
@@ -45,8 +47,10 @@
 			</view>
 		</view>
 	</view>
-	<view class="list-item list-item-last" wx:if="{{is_last}}">我也是有底线的！</view>
-	<view class="list-item list-item-last" wx:else>加载中...</view>
+	<block wx:if="{{order.length != 0}}">
+		<view class="list-item list-item-last" wx:if="{{is_last}}">我也是有底线的！</view>
+		<view class="list-item list-item-last" wx:else>加载中...</view>
+	</block>
 </view>
 
 <wxs module="priceFormat">

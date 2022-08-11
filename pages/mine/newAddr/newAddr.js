@@ -22,6 +22,7 @@ Page({
     can_click:false,//默认不可点击
     default_addr: '', //默认项
     is_self: '',
+    animationData:{},
   },
   checked : function (e){
     this.setData({
@@ -94,7 +95,24 @@ Page({
 
  
   onShow: function () {
-
+      var animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'linear',
+      })
+      this.animation = animation
+      var next = true;
+      setInterval(function(){
+        if(next){
+          this.animation.scale(0.95).step()
+          next = !next;
+        }else{
+          this.animation.scale(1).step()
+          next = !next;
+        }
+        this.setData({
+          animationData:animation.export()
+        })
+      }.bind(this), 1000);
   },
    //获取用户定位授权，地图选点
    getLocation: function () {
@@ -188,9 +206,6 @@ Page({
       })
       return false;
     }
-    console.log(params)
-    console.log(addressName)
-    console.log(addressDetail)
     fetch('/api/saveAddr', {
       addr_id : this.data.addr_id,
       user_id : wx.getStorageSync('user_id'),
@@ -215,9 +230,10 @@ Page({
           url: '/pages/index/index'
         }); */
         if(this.data.is_self == 'false'){
-          wx.navigateTo({
-            url: '/pages/list/list?is_self=false'
-          });
+          wx.setStorageSync("is_reFresh","0")
+          wx.navigateBack({
+            delta: 1
+          })
         }else{
           wx.reLaunch({
             url: '/pages/mine/addr/addr'

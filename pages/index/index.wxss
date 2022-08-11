@@ -1,4 +1,29 @@
-
+.banner{
+  width: 100%;
+  height: 150px;
+  background-color: #e891a0;
+  color: #fff;
+  display:grid;
+}
+.banner-title{
+  font-size: 28px;
+  font-weight: 600;
+  padding: 20px 20px 0px 20px;
+}
+.banner-small-title{
+  font-size: 14px;
+  padding: 0px 20px 0px 20px;
+}
+.yellow{
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+  background-color: #f7dc6f;
+  width: 100rpx;
+}
+.shop-info{
+  width: 100%;
+  justify-content: center;
+}
 .swiper {
   height: 600rpx;
 }
@@ -10,20 +35,22 @@
 }
 .main{
   width: 100%;
-  height: 100%;
   position: fixed;
   background: linear-gradient(rgb(255,255,255),rgb(246,244,240) );
   background-size: 100% 100%;
 }
 
 .addr-box{
-  width: 90%;
-  height:50px;
+  width: 100%;
+  padding-left: 20px;
+  line-height: 2.5;
   margin:auto;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
+  background-color: #e891a0;
+  color: #fff;
 }
 .addr-box image{
   width:25px;
@@ -93,4 +120,8 @@
   background-color: #fff;
   z-index: 999;
   border-radius: 5%;
+}
+.w-20{
+  width: 20px;
+  height: 20px;
 }

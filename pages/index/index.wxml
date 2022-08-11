@@ -1,13 +1,29 @@
 <!--index.wxml-->
-<view class="main">
-	<view class="addr-box">
-		<view class="images_icon">
-			<image src="../../images/icon/location.png"></image>
+<scroll-view class="main" scroll-y="true" style="height: {{windowHeight}};">
+	<view class="banner">
+		<view class="banner-title">
+			牛豚精肉专卖店
 		</view>
-		<view class="text">
-			{{addrName}}
+		<view class="banner-small-title">
+			本店支持
+			<text class="yellow">到店自提</text><text class="yellow">外送服务</text>
+		</view>
+		<view class="banner-small-title">
+			快递费10元，满150包邮！！！
+		</view>
+		<view class="shop-info small-text flex" bindtap="show_open">
+			查看商家信息
+			<image class="w-20" src="{{arrow_img}}"></image>
 		</view>
 	</view>
+	<block wx:if="{{show_flag}}">
+		<view class="addr-box small-text">
+				联系电话：18640844669
+		</view>
+		<view class="addr-box small-text">
+				商家地址：浦项IT中心9L
+		</view>
+	</block>
 	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
 		<block wx:for="{{swiper}}" wx:key="index">
 			<swiper-item>
@@ -18,9 +34,9 @@
 	<view class="card-box">
 		<view class="card-item p-15" style="align-items: center;">
 		<block wx:if="{{hasUserInfo}}">
-			<image class="card-item-image" src="{{userInfo.avatarUrl}}"></image>
+			<image class="card-item-image" src="{{userInfo.avatarurl}}"></image>
 			<view class="grid">
-				<label class="text">{{userInfo.nickName}}</label>
+				<label class="text">{{userInfo.nickname}}</label>
 				<view class="small-text bold vip-bg">欢迎VIP用户</view>
 			</view>
 		</block>
@@ -47,8 +63,8 @@
 			</button>
 		</view>
 	</view>
-</view>
-
+	<view class="line"></view>	
+</scroll-view>
 <!-- 弹窗广告 -->
 <!-- <block wx:if="{{!hasUserInfo}}">
 	<button class="bg-gray" bindtap="getUserProfile"></button>

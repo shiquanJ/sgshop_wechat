@@ -57,7 +57,7 @@
 			<view wx:else>{{priceFormat(cartPrice)}}</view>
 		</view>
 	</view>
-	<view class="operate-submit {{cartNumber !==0 ? 'operate-submit-activity' : ''}}" bindtap="order">结算</view>
+	<view class="operate-submit {{cartNumber !==0 ? 'operate-submit-activity' : ''}}" bindtap="order">下单</view>
 </view>
 </block>
 <!-- 购物车 -->

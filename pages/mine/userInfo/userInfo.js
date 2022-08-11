@@ -7,9 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl:wx.getStorageSync('avatarUrl')==null?"":wx.getStorageSync('avatarUrl'),
-    phoneNo: wx.getStorageSync('phoneNo')==null?"":wx.getStorageSync('phoneNo'),
-    nickName: wx.getStorageSync('nickName')==null?"":wx.getStorageSync('nickName'),
+    avatarUrl:"",
+    phoneNo: "",
+    nickName: "",
   },
   //表单提交
   submit(){
@@ -52,8 +52,8 @@ Page({
     if(wx.getStorageSync("userInfo")){
       var userInfo =wx.getStorageSync("userInfo")
       that.setData({
-        nickName: userInfo.nickName,
-        avatarUrl: userInfo.avatarUrl,
+        nickName: userInfo.nickname,
+        avatarUrl: userInfo.avatarurl,
       })
     }
     //获取收藏地址

@@ -21,5 +21,15 @@ exports.main = async (event, context) => {
       return await updateRecord.main(event, context);
     case 'sumRecord':
       return await sumRecord.main(event, context);
-  }
+    case 'send':
+      const wxContext = cloud.getWXContext()
+      try {
+        const result = await cloud.openapi.uniformMessage.send({
+            touser: event.openId,//公众号appid，要求与小程序有绑定且同主体
+          })
+        return result
+      } catch (err) {
+        return err
+      }
+    }
 };

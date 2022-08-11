@@ -6,12 +6,9 @@
       <image src="{{avatarUrl}}"></image>
     </view>
     <view class="item-name">
-      <text class="text-defalut f-w">
+      <text class="text-defalut opa-8 bold">
         {{nickName}}
       </text>
-      <view class="p-10">
-        <text class="btn-modify ">修改</text>
-      </view>
     </view>
     <view class="border-bottom"></view>
     <view class="item-phoneNo">

@@ -95,15 +95,22 @@
   margin-top:10rpx;
   opacity: 0.6;
 }
-
+.last-item{
+  display: grid;
+  justify-items: center;
+  align-items: baseline;
+}
 .la_tip{
-  margin-top: 30rpx;
   text-align: center;
-  font-size: 28rpx;
-  font-weight: 500;
+  font-size: 32rpx;
+  font-weight: 600;
   color: #f24;
 }
-
+.wechat-icon{
+  width: 40px;
+  height: 40px;
+  margin-top: 30rpx;
+}
 .gender{
   width: 30%;
   display:flex;

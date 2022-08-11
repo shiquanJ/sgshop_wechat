@@ -8,7 +8,7 @@
   <view class="con2 flex-row j_b" bindtap="getLocation">
     <view class="con2_text1">收货地址</view>
     <block wx:if="{{add}}">
-      <view class="con2_input">
+      <view class="con2_input flex">
         <input type="text" placeholder="点击选择收货地址" placeholder-class="p_class" disabled></input>
         <image class="add_arrow" src="../../../images/icon/add_left.png"></image>
       </view>
@@ -24,7 +24,7 @@
   <view class="con2 flex-row j_b">
     <view class="con2_text1">详细地址</view>
     <view class="con2_input">
-      <input type="text" placeholder="详细地址，例，文君庭小区" placeholder-class="p_class" bindinput="setInput" data-type="detail"
+      <input type="text" placeholder="详细地址" placeholder-class="p_class" bindinput="setInput" data-type="detail"
         value="{{params.detail}}"></input>
     </view>
   </view>
@@ -49,4 +49,7 @@
 
 </view>
 <view class="btn bg {{can_click?'ok':''}}" bindtap="subAddress">保存</view>
-<view class="la_tip" hidden="{{address_id}}" bindtap="chooseAddress">获取微信收货地址</view>
+<view class="last-item"  animation = "{{animationData}}" bindtap="chooseAddress">
+  <image class="wechat-icon" src="../../../images/icon/wechat.png"></image>
+  <view class="la_tip" hidden="{{address_id}}">获取微信收货地址</view>
+</view>

@@ -28,10 +28,22 @@ page {
   margin-top:52px;
 }
 .list-empty {
-  margin-top: 80rpx;
-  text-align: center;
-  color: #666;
-  font-size: 40rpx;
+  display:grid;
+  justify-items: center;
+  align-items: center;
+}
+.list-empty image{
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+}
+.list-empty text{
+  font-weight: 600;
+  opacity: 0.5;
+}
+.detail-list{
+  width: 100%;
+  overflow: hidden;
 }
 .detail-image{
   width: 80px;

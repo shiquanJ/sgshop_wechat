@@ -2,6 +2,7 @@ const app = getApp()
 const fetch = app.fetch
 const server = app.globalData.server
 var temp_order_id = '' //임시 오더 번호
+
 Page({
   data: {
     tempOrderList:{},
@@ -42,7 +43,7 @@ Page({
     //false是外卖
     this.setData({
         is_self:options.is_self,
-        order_sendtime: order_hous +":" +order_minutes
+        order_sendtime: options.order_sendtime
      })
 
     //获取临时订单list
@@ -66,6 +67,13 @@ Page({
     }, () => {
       this.onLoad(options)
     })
+  },
+  onShow: function(){
+    let flag = wx.getStorageSync('is_reFresh');
+    if(flag == '0' ){
+      wx.removeStorageSync('is_reFresh')
+      this.getAddrList();
+    }
   },
   getAddrList: function (e){
     fetch('/api/addrList', {
@@ -105,7 +113,7 @@ Page({
   },
   payment: function(e){
     var outTradeNo = temp_order_id;  //订单号
-    console.log(this.data.comment)
+
     //先付款，然后生成订单
     wx.showToast({
       title: '支付成功',
@@ -193,4 +201,10 @@ Page({
   comment: function (e) {
     this.data.comment = e.detail.value;
   }
+  ,setNewAddr: function(e){
+    console.log('123')
+    wx.navigateTo({
+      url: '../../mine/newAddr/newAddr?is_self='+this.data.is_self,
+    })
+  },
 })

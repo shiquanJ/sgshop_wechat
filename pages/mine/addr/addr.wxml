@@ -1,7 +1,7 @@
 
 <view class="container">
   <view class="header">
-    <view class="btn-white" bindtap="setNewAddr">新增地址</view>
+    <view class="btn-white bold opa-8" bindtap="setNewAddr">新增地址</view>
   </view>
   <block wx:if="{{hasAddrInfo}}">
     <view class="item-list opa-8" wx:for="{{addrList}}" bindtap="setDetailAddr" data-id="{{item.a_id}}">

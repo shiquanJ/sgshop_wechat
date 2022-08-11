@@ -42,16 +42,135 @@
 }
 .item-list{
   width:90%;
+  margin: auto;
   display:flex;
   line-height: 3.5;
   border-bottom: 1px solid rgb(225, 225, 225);
-  margin-left: 15px;
+  justify-content: space-between;
 }
 .item-name{
-  font-size: 16px;
-  font-weight: 600;
-  opacity: 0.8;
-  color: rgba(122, 122, 122);
+  font-size: 14px;
+  font-weight: 500;
+}
+.item-img{
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
+}
+.arrow-left{
+  width: 30px;
+  height: 30px;
+  padding-top: 10px;
 }
 
+.unabled-popup{
+  widows: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup-item{
+  width: 90%;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 507;
+}
+
+
+/* 灯泡 */
+::after,
+::before {
+  box-sizing: border-box
+}
+
+.war_pop {
+  width           : 75rpx;
+  height          : 275rpx;
+  animation       : box-swing 3s infinite ease-in-out;
+  transform-origin: top center;
+  position        : absolute;
+  top             : -10rpx;
+  left            : 40px;
+}
+
+
+.box {
+  z-index      : 10;
+  display      : block;
+  width        : 75rpx;
+  height       : 75rpx;
+  border-radius: 50%;
+  position     : absolute;
+  top          : 200rpx;
+  left         : calc(50% -(75rpx/2));
+  background   : pink;
+  box-shadow   : 5rpx 5rpx 80rpx #e4cedf, 5rpx -5rpx 80rpx #e4cedf, -5rpx 5rpx 80rpx #e4cedf, -5rpx -5rpx 80rpx #e4cedf;
+  cursor       : pointer;
+}
+
+.box::before {
+  content                : "";
+  position               : absolute;
+  width                  : 35rpx;
+  height                 : 50rpx;
+  background             : #222;
+  bottom                 : 100%;
+  left                   : calc(50% -(35rpx/2));
+  z-index                : -1;
+  border-top-left-radius : 10rpx;
+  border-top-right-radius: 10rpx
+}
+
+.box::after {
+  content   : "";
+  position  : absolute;
+  width     : 10rpx;
+  height    : 250rpx;
+  background: #222;
+  bottom    : 100%;
+  left      : calc(50% - 5rpx);
+  z-index   : -1
+}
+
+.box .box_view {
+  display   : block;
+  position  : absolute;
+  width     : 2rpx;
+  height    : 30rpx;
+  background: #222;
+  top       : 2rpx;
+  left      : 28rpx;
+  box-shadow: 17rpx 0 #222;
+  opacity   : 1;
+}
+
+.box .box_view::after {
+  content   : "";
+  position  : absolute;
+  bottom    : -2rpx;
+  left      : 4rpx;
+  background: #222;
+  width     : 2rpx;
+  height    : 12rpx;
+  display   : block;
+  box-shadow: 4.5rpx 0 #222, 9rpx 0 #222;
+}
+
+@keyframes box-swing {
+  0% {
+    transform: rotate(-10deg)
+  }
+
+  50% {
+    transform: rotate(10deg)
+  }
+
+  100% {
+    transform: rotate(-10deg)
+  }
+}
 

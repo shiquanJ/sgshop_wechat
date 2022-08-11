@@ -1,0 +1,23 @@
+<!--pages/cal2/index2.wxml-->
+<calendar bind:change="dateChange" spot="{{spot}}" defaultTime=""></calendar>
+  <view class="act_item">
+    <picker mode="multiSelector" value="{{start_time}}" data-type="start_time" data-param='start_time_p' bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+      <block wx:if="{{!re_time}}">
+        <view class="nowp"><text class="require">*</text>
+        请选择配送时间：
+        </view>
+      </block>
+      <block wx:else>
+        <view class="nowp"><text class="require">*</text>
+          配送时间：{{dateString}} {{re_time}}
+        </view>
+      </block>
+    </picker>
+    <block wx:if="{{re_time}}">
+      <view class="operate">
+        <view class="operate-info">
+        </view>
+        <view class="operate-btn" bindtap="confirm">确认</view>
+      </view>
+    </block>
+  </view>

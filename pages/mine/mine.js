@@ -10,10 +10,10 @@ Page({
     nickName:"",
     avatarUrl:"",
     addrNo:"",
-    userName:"",
     phoneNo:"",
-    display: "none",
-    img_url: imgurl
+    is_open: false,
+    img_url: imgurl,
+    windowHeight:''
   },
   //表单提交
   submit(){
@@ -52,12 +52,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     var that=this;
+
+    that.setData({
+      windowHeight: wx.getSystemInfoSync().windowHeight + "px"
+    })
+    console.log(wx.getStorageSync("userInfo"));
     if(wx.getStorageSync("userInfo")){
       var userInfo =wx.getStorageSync("userInfo")
       that.setData({
-        nickName: userInfo.nickName,
-        avatarUrl: userInfo.avatarUrl,
+        nickName: userInfo.nickname,
+        avatarUrl: userInfo.avatarurl,
       })
     }
     //获取收藏地址
@@ -77,28 +83,6 @@ Page({
       })
     }
   }, 
-  //获取手机号，只有企业小程序才能用
-  getPhoneNumber (e) {
-    this.setData({display:"none"})
-
-    //서버 호출
-    var server = app.globalData.server;
-    console.log(server)
-    wx.request({
-      url: server+'/getPhoneNumber',
-      data: {
-        code: e.detail.code
-      },
-      success:function(res){
-        wx.setStorageSync('phoneNo', '18640844669')
-        wx.navigateTo({
-          url: './userInfo/userInfo',
-         })
-      }
-    })
-
-  },
-  
   //我的信息
   myInfo : function(e){
     console.log(wx.getStorageSync("phoneNo"))
@@ -110,8 +94,19 @@ Page({
     wx.navigateTo({
       url: './addr/addr',
      })
-  },
-  goCancel : function(){
-    this.setData({display:"none"})
   }
+  ,goOrderList : function(){
+    wx.switchTab({
+      url: '../order/list/list',
+    })
+  }
+  ,unabled : function (){
+    this.setData({is_open:true})
+  }
+  //close_popup
+  ,close_popup : function(){
+    this.setData({
+      is_open:false
+    })
+  },
 })

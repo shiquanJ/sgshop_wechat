@@ -7,7 +7,8 @@ Page({
     order_detail: {},
     is_last: true,
     server: app.globalData.server,
-    index: 0
+    index: 0,
+    windowHeigh: '',
   },
   row: 10,
 
@@ -15,6 +16,12 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
+    var windowH = (wx.getSystemInfoSync().windowHeight ) + "px"
+    console.log(windowH)
+    this.setData({
+      windowHeigh: windowH
+    })
+    console.log(wx.getStorageSync('user_id'))
     this.loadData({
       last_id: 0,
       row: 10,
@@ -100,6 +107,7 @@ Page({
 
   loadData: function (options) {
     wx.showNavigationBarLoading()
+    console.log( wx.getStorageSync('user_id'))
     fetch('/api/orderlist', {
       user_id: wx.getStorageSync('user_id'),
       last_id: options.last_id,

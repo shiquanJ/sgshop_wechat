@@ -1,0 +1,47 @@
+/* pages/cal2/index2.wxss */
+page{
+  background-color: #f6f6f6;
+}
+.act_item{
+  margin-top: 20rpx;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+}
+.date-string{
+  font-weight: 600;
+  opacity: 0.8;
+}
+.nowp{
+  font-weight: 600;
+  opacity: 0.8;
+}
+.require{
+  color: #ff1118;
+  padding-right: 10rpx;
+}
+.operate {
+  height: 110rpx;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display:flex
+}
+
+.operate-info {
+  width: 74%;
+  background-color: #353535;
+  color: #fff;
+  line-height: 110rpx;
+  padding-left: 40rpx;
+}
+
+.operate-btn {
+  width: 26%;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 110rpx;
+  background-color: #f24;
+  color: #fff;
+}
