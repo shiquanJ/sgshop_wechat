@@ -31,7 +31,7 @@ Page({
     })
     //获取手机高度
     const sysInfo = wx.getSystemInfoSync();
-    console.log("self::"+options.is_self)
+
     this.setData({
       is_self: options.is_self,
       windowHeight : sysInfo.windowHeight + "px"
@@ -40,7 +40,6 @@ Page({
     var that = this
     fetch('/api/list', '', 'POST').then(res => {
     
-      console.log(res)
       if(res.prdList == null){
         this.onLoad()
       }
@@ -207,15 +206,12 @@ Page({
       title: '正在生成订单...'
     })
 
-    console.log(this.data.cartList)
-
     app.setSession('cartList', this.data.cartList)
 
     fetch('/api/temp_order', {
       
       cartList: JSON.stringify(this.data.cartList)
     }, 'POST').then(data => {
-      console.log(data.temp_order_id);
       wx.hideLoading()
       if(this.data.is_self == 'false'){
         wx.navigateTo({

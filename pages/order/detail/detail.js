@@ -17,7 +17,6 @@ Page({
       order_id:order_id,
       user_id: wx.getStorageSync('user_id')
     }).then(data => {
-      console.log(data)
       this.setData(data)
       wx.hideLoading()
     }, () => {
@@ -26,7 +25,6 @@ Page({
     })
     wx.showShareMenu({
       success(res){
-        console.log(res);
       }
     })
   },
@@ -49,7 +47,6 @@ Page({
     })
   },
   onShareAppMessage: function () {
-    console.log("123")
   },
 
 })

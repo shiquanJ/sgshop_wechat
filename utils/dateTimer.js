@@ -33,8 +33,8 @@ function dateTimePicker(date) {
   var defaultDate = date ? [...date.split(' ')[0].split('-'), ...date.split(' ')[1].split(':')] : getNewDateArry();
   // 处理联动列表数据
   /*时分*/
-  dateTimeArray[0] = getLoopArray(10, 23);
-  dateTimeArray[1] = getLoopArray(0, 59);
+  dateTimeArray[0] = ['10','11','12','13','14','15','16','17','18','19','20']
+  dateTimeArray[1] = ['00','10','20','30','40','50']
 
   dateTimeArray.forEach((current, index) => {
     dateTime.push(current.indexOf(defaultDate[index]));

@@ -26,8 +26,7 @@ Page({
 
     //this.getWxLocation()
     var userInfo = wx.getStorageSync("userInfo")
-    console.log('userInfo:::'+userInfo)
-    if(userInfo ==''){
+    if(userInfo =='' || userInfo == null){
       this.wxlogin()
     }else{
       this.setData({
@@ -78,17 +77,14 @@ Page({
           fetch('/api/wxlogin',{
             code: res.code, 
           }).then(res=>{
-            console.log('wx::login::'+res.userInfo)
             if(res.userInfo != undefined){
               this.setData({
                 userInfo : res.userInfo,
                 hasUserInfo : true
               })
-              console.log(res.userInfo.nickname)
               wx.setStorageSync('user_id', res.userInfo.user_id)
               wx.setStorageSync('userInfo', res.userInfo)
             }else{
-              console.log(res.userid)
               wx.setStorageSync('user_id', res.userid)
             }
           })
@@ -104,12 +100,10 @@ Page({
   },
   getUserProfile(e){
     var userInfo = this.data.userInfo;
-    console.log(userInfo)
     if(!userInfo){
       wx.getUserProfile({
         desc: '用于完善会员资料',
         success: (res) => {
-          console.log(res.userInfo)
           //把userInfo保存到db里
           fetch('/api/saveUserInfo', {
             user_id : wx.getStorageSync('user_id'),
@@ -145,7 +139,6 @@ Page({
       })
     }else if(id == 1){        //外卖
       var addList = wx.getStorageSync('addrList')
-      console.log(addList)
       if(addList){
         wx.navigateTo({
           url: '/pages/list/list?is_self=false'
@@ -217,7 +210,6 @@ Page({
             longitude: res.longitude
           },
           success : (res) =>{
-            console.log("addrName:2:"+res.result.address_reference.landmark_l2.title);
             wx.setStorageSync("addrName",res.result.address_reference.landmark_l2.title)
             this.setData({
               addrName : wx.getStorageSync("addrName")

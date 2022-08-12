@@ -19,10 +19,8 @@ Page({
   onLoad: function (options) {
     // 获取完整的年月日 时分秒，以及默认显示的数组
     var obj = dateTimePicker.dateTimePicker();
-    console.log(obj.dateTime)
     this.setData({
-      start_time: obj.dateTime == -1? 0: obj.dateTime ,
-      end_time: obj.dateTime,
+      start_time: [0,0] ,
       dateTimeArray: obj.dateTimeArray,
       is_self : options.is_self,
       temp_order_id: options.temp_order_id,
@@ -62,9 +60,6 @@ Page({
     var date1 = new Date(str1.replace(/-/g,'/')+" "+str2)
     var date2 = new Date();
     let check_m = parseInt(Math.round(date1 - date2)/1000/60)
-    console.log('str1:::'+str1.replace(/-/g,'/'))
-    console.log('str2:::'+str2)
-    console.log('check_m:::'+check_m)
     if(check_m < 58){
       wx.showModal({
         cancelText: '取消',

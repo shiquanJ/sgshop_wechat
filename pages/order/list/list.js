@@ -17,11 +17,9 @@ Page({
       title: '加载中...',
     })
     var windowH = (wx.getSystemInfoSync().windowHeight ) + "px"
-    console.log(windowH)
     this.setData({
       windowHeigh: windowH
     })
-    console.log(wx.getStorageSync('user_id'))
     this.loadData({
       last_id: 0,
       row: 10,
@@ -107,7 +105,6 @@ Page({
 
   loadData: function (options) {
     wx.showNavigationBarLoading()
-    console.log( wx.getStorageSync('user_id'))
     fetch('/api/orderlist', {
       user_id: wx.getStorageSync('user_id'),
       last_id: options.last_id,
@@ -116,7 +113,6 @@ Page({
     }).then(data => {
       this.last_id = data.last_id
       // 判断是否到底
-      console.log(data.detail_list)
       this.setData({ 
         is_last: data.order_list.length < this.row 
       })

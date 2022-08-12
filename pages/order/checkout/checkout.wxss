@@ -40,7 +40,7 @@ page {
 .order-item {
   background-color: #fff;
   display: flex;
-  font-size: 32rpx;
+  font-size: 28rpx;
   padding: 25rpx 0;
   border-top: 1px solid #e3e3e3;
 }

@@ -20,26 +20,15 @@ Page({
 
     addrList:"",  //收货地址
     is_open:false, //收货地址popup
+    express: false, //快递
   },
 
   
   onLoad: function (options) {
     temp_order_id = options.temp_order_id
-    console.log('temp_order_id::'+temp_order_id);
     wx.showLoading({
-      title: '努力加载中...',
+      title: '加载中...',
     })
-    //获取配送时间
-    var timestamp = Date.parse(new Date());
-    timestamp = timestamp / 1000;
-    var order_hous = new Date((timestamp + 60 * 30)*1000).getHours()
-    var order_minutes = new Date((timestamp + 60 * 30)*1000).getMinutes()
-
-    //todo
-    if(order_minutes < 9 ){
-      order_minutes = '0'+order_minutes
-    }
-    console.log(options.is_self)
     //false是外卖
     this.setData({
         is_self:options.is_self,
@@ -52,7 +41,6 @@ Page({
       user_id: wx.getStorageSync('user_id'),
       is_self: this.data.is_self
     }).then(data => {
-      console.log('tempOrderList::'+JSON.stringify(data.tempOrderList));
       this.setData({
         tempOrderList:data.tempOrderList,
         total_cnt: data.total_cnt,
@@ -63,6 +51,13 @@ Page({
         receipt_phone: data.receipt_phone,
         receipt_detail: data.receipt_detail,
       })
+      //价格少于150，得加配送费
+      if(Number(this.data.total_price) <= 150){
+        this.setData({
+          express: true,
+          total_price: Number(this.data.total_price) + 10,
+        })
+      }
       wx.hideLoading()
     }, () => {
       this.onLoad(options)
