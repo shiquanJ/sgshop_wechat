@@ -215,7 +215,8 @@ Page({
       wx.hideLoading()
       if(this.data.is_self == 'false'){
         wx.navigateTo({
-          url: '/pages/reservation/reservation?temp_order_id=' + data.temp_order_id + '&is_self='+this.data.is_self
+          //url: '/pages/reservation/reservation?temp_order_id=' + data.temp_order_id + '&is_self='+this.data.is_self
+          url: '/pages/order/checkout/checkout?temp_order_id=' + data.temp_order_id + '&is_self='+this.data.is_self
         })       
       }else{
         wx.navigateTo({

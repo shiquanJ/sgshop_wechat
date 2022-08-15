@@ -5,6 +5,7 @@ const fetch = app.fetch
 Page({
   data: {
     server: app.globalData.server,
+    express: false, //配送费
   },
 
   onLoad: function (options) {
@@ -27,6 +28,8 @@ Page({
       success(res){
       }
     })
+    console.log(this.data)
+    
   },
 
   onUnload: function () {

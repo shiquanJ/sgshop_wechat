@@ -56,7 +56,7 @@ page {
 .menu-start {
   margin: 30rpx;
   border-radius: 80rpx;
-  background-color: #f24;
+  background-color: #e63e57;
   color: #fff;
 }
 
@@ -82,7 +82,7 @@ page {
 }
 
 .list-item-price {
-  color: #f24;
+  color: #e63e57;
   margin-left: 20rpx;
   font-weight: 600;
 }
@@ -93,7 +93,7 @@ page {
 .list-item-state{
   float: right;
   margin-right: 10px;
-  color: #f24;
+  color: #e63e57;
 }
 .list-item-r >view {
   position: absolute;
@@ -119,7 +119,7 @@ page {
   font-size: 24rpx;
   padding: 17rpx 10rpx;
   margin-left: 20rpx;
-  background-color: #f24;
+  background-color: #e63e57;
 }
 
 .taken-yes {

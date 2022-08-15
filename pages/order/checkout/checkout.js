@@ -25,6 +25,15 @@ Page({
 
   
   onLoad: function (options) {
+    let date = new Date();
+    let hours = date.getHours();
+    let order_sendtime = date.getFullYear()+'-'+Number(date.getMonth()+1)+'-'+date.getDate();
+    
+    if(hours < 10 ){
+      order_sendtime = order_sendtime + ' 17:30'
+    }else{
+      order_sendtime = date.getFullYear()+'-'+Number(date.getMonth()+1)+'-'+Number(date.getDate()+1)+ ' 17:30'
+    }
     temp_order_id = options.temp_order_id
     wx.showLoading({
       title: '加载中...',
@@ -32,7 +41,7 @@ Page({
     //false是外卖
     this.setData({
         is_self:options.is_self,
-        order_sendtime: options.order_sendtime
+        order_sendtime: order_sendtime
      })
 
     //获取临时订单list
@@ -52,7 +61,7 @@ Page({
         receipt_detail: data.receipt_detail,
       })
       //价格少于150，得加配送费
-      if(Number(this.data.total_price) <= 150){
+      if(Number(this.data.total_price) < 150){
         this.setData({
           express: true,
           total_price: Number(this.data.total_price) + 10,
@@ -111,7 +120,7 @@ Page({
 
     //先付款，然后生成订单
     wx.showToast({
-      title: '支付成功',
+      title: '生成订单中',
       icon: 'success',
       duration: 2000,
       success: () => {
@@ -125,6 +134,7 @@ Page({
           user_comment: this.data.comment,
           is_self: this.data.is_self,
           addr_id: this.data.addr_id,
+          is_express: this.data.express
         },'POST').then(res =>{
           if(res.order_id != null && res.order_id != ''){
             wx.navigateTo({

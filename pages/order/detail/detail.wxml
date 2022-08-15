@@ -68,6 +68,17 @@
 				</view>
 				<view class="order-item-price">{{priceFormat(item.price)}}</view>
 			</view>
+      <block wx:if="{{is_express == 'true'}}">
+        <view class="order-item">
+          <view class="order-item-l center">
+            <image class="order-item-image" src="../../../images/icon/takeout.png"></image>
+            <view >
+              不满150元，需10元配送费!
+            </view>
+          </view>
+          <view class="order-item-price flex center">￥10</view>
+        </view>
+      </block>
 			<!-- 优惠信息 -->
 			<view class="order-item" wx:if="{{checkPromotion(promotion)}}">
 				<view class="order-item-l">
@@ -105,12 +116,7 @@
 				<view class="list-info">{{create_dt}}</view>
 			</view>
 		</view>
-		<view class="tips" wx:if="{{order_state == '0'}}">
-			<view class="bg-gradient3">
-				请凭此页面至取餐台取餐~
-			</view>
-		</view>
-		<view class="tips" wx:else>取餐号为 {{order_number}} 的顾客,您已取餐~</view>
+		
 	</block>
 </view>
 

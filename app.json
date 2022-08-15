@@ -14,8 +14,8 @@
   "window": {
     "backgroundColor": "#fff",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#e891a0",
-    "navigationBarTitleText": "PizzHut-세권",
+    "navigationBarBackgroundColor": "#e63e57",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

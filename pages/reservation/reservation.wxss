@@ -42,6 +42,6 @@ page{
   font-size: 30rpx;
   text-align: center;
   line-height: 110rpx;
-  background-color: #f24;
+  background-color: #e63e57;
   color: #fff;
 }

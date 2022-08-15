@@ -22,7 +22,7 @@
 }
 
 .bg {
-  background: #f24;
+  background: #e63e57;
   opacity: 0.5;
 }
 .ok{
@@ -104,7 +104,7 @@
   text-align: center;
   font-size: 32rpx;
   font-weight: 600;
-  color: #f24;
+  color: #e63e57;
 }
 .wechat-icon{
   width: 40px;

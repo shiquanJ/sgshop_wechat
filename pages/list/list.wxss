@@ -62,8 +62,8 @@ page {
 }
 
 .category-selected {
-  color: #e891a0;
-  border-left: 6rpx solid #e891a0;
+  color: #e63e57;
+  border-left: 6rpx solid #e63e57;
   background-color: white;
 }
 
@@ -75,7 +75,7 @@ page {
   font-size: 24rpx;
   background-color: #fbf8ff;
   padding: 10rpx;
-  color: #e891a0;
+  color: #e63e57;
 }
 
 .food-item {
@@ -102,7 +102,7 @@ page {
 
 .food-item-price {
   margin-top: 14rpx;
-  color: #e891a0;
+  color: #e63e57;
 }
 
 .food-item-opt {
@@ -148,7 +148,7 @@ page {
 }
 
 .operate-submit-activity {
-  background: #f24;
+  background: #e63e57;
   color: #fff;
 }
 
@@ -175,7 +175,7 @@ page {
   border-radius: 50%;
   left: 50%;
   top: 50%;
-  background: #f24;
+  background: #e63e57;
 }
 
 .operate-shopcart-empty {
@@ -248,7 +248,7 @@ page {
 }
 
 .shopcart-head-title:before {
-  background: #f24;
+  background: #e63e57;
   width: 8rpx;
   height: 32rpx;
   content: "";
@@ -292,7 +292,7 @@ page {
 }
 
 .shopcart-item-price {
-  color: #f24;
+  color: #e63e57;
 }
 
 .shopcart-item-number {
@@ -312,7 +312,7 @@ page {
 .shopcart-icon-add:before {
   content: "\e728";
   font-size: 44rpx;
-  color: #f24;
+  color: #e63e57;
 }
 
 .iconfont {

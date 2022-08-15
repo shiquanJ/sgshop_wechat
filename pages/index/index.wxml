@@ -18,10 +18,10 @@
 	</view>
 	<block wx:if="{{show_flag}}">
 		<view class="addr-box small-text">
-				联系电话：18640844669
+				联系电话：159-9863-8854
 		</view>
 		<view class="addr-box small-text">
-				商家地址：浦项IT中心9L
+				商家地址：大连市中山区虎滩路164-7
 		</view>
 	</block>
 	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
@@ -37,7 +37,6 @@
 			<image class="card-item-image" src="{{userInfo.avatarurl}}"></image>
 			<view class="grid">
 				<label class="text">{{userInfo.nickname}}</label>
-				<view class="small-text bold vip-bg">欢迎VIP用户</view>
 			</view>
 		</block>
 		<block wx:else>

@@ -48,6 +48,7 @@ page {
 .order-item-l {
   flex: 1;
   display: flex;
+  
 }
 
 .order-item-image {
@@ -72,12 +73,12 @@ page {
 }
 
 .order-promotion-price {
-  color: #f24;
+  color: #e63e57;
 }
 
 .order-total-price {
   font-size: 40rpx;
-  color: #f24;
+  color: #e63e57;
 }
 
 .operate {
