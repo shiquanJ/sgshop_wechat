@@ -22,8 +22,6 @@ App({
   
   globalData: {
     userInfo: wx.getStorageSync("userInfo"),
-    //server: 'http://116.62.231.62/wechat',
-    server: 'http://8.142.251.252:8086'
   },
   setSession : function(sessionNm, sessionValue){
     wx.setStorageSync(sessionNm, sessionValue)

@@ -40,6 +40,7 @@ Page({
     var that = this
     fetch('/api/list', '', 'POST').then(res => {
     
+      console.log(JSON.stringify(res))
       if(res.prdList == null){
         this.onLoad()
       }
