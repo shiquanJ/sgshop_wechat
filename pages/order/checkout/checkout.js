@@ -16,6 +16,7 @@ Page({
     gender: '',
     receipt_phone: '',
     receipt_detail: '',
+    receipt_address_detail: '',
     order_sendtime: '',
 
     addrList:"",  //收货地址
@@ -59,6 +60,7 @@ Page({
         gender: data.gender,
         receipt_phone: data.receipt_phone,
         receipt_detail: data.receipt_detail,
+        receipt_address_detail: data.receipt_address_detail,
       })
       //价格少于150，得加配送费
       if(Number(this.data.total_price) < 150){
@@ -105,6 +107,7 @@ Page({
         gender: data.gender,
         receipt_phone: data.receipt_phone,
         receipt_detail: data.receipt_detail,
+        receipt_address_detail: data.receipt_address_detail,
       })
       this.close_popup()
     })

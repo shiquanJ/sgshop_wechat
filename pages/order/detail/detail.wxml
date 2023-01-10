@@ -7,8 +7,11 @@
 					<view class="addr-box">
 						<view class="flex bold">
 							<image class="addr-image" src="/images/icon/location.png"></image>
-                {{receipt_detail}}
+                {{receipt_address_detail}}
 						</view>
+            <view class="bold p-l-35">
+               {{receipt_detail}}
+            </view>
 						<view class="flex p-l-35 space-between">
 							<view class="small-text opa-6">
 								{{receipt_name+" "+gender}}
@@ -22,7 +25,7 @@
 						</view>
 						<view class="flex space-between p-l-35">
 							<view class="bold opa-8">
-								{{order_state == '0' ? '配送中':'已完成'}}
+								{{order_state == '0' ? '预计送达时间：':'已完成'}}
 							</view>
 							<view class="small-text opa-8 orange-text">
 								{{order_sendtime}} 送达

@@ -39,7 +39,7 @@ Page({
   },
   copy_text: function(){
     wx.setClipboardData({
-      data: this.data.receipt_detail+" "+this.data.receipt_name+" "+this.data.receipt_phone,
+      data: this.data.receipt_address_detail+" "+this.data.receipt_detail+" "+this.data.receipt_name+" "+this.data.receipt_phone,
       success:function(res){
         wx.showToast({
           title: '复制成功',
